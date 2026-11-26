@@ -1,0 +1,74 @@
+!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pınarbaşı Oto Detailing - Yönetim Paneli</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px;background:#101820;color:white;font-family:Arial,sans-serif}
+.container{max-width:600px;margin:auto}
+h1{text-align:center;color:#e5b94c;font-size:25px}
+h2{color:#e5b94c;font-size:19px}
+.card{background:#1d2a35;padding:18px;border-radius:12px;margin:15px 0}
+label{display:block;margin:14px 0 6px}
+input,textarea{width:100%;padding:12px;border:1px solid #53616d;border-radius:7px;background:white;color:#111;font-size:16px}
+textarea{min-height:100px}
+button{width:100%;padding:14px;margin-top:15px;border:0;border-radius:8px;background:#e5b94c;color:#111;font-size:16px;font-weight:bold}
+.note{color:#bdc7ce;font-size:13px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Pınarbaşı Oto Detailing</h1>
+<p style="text-align:center">İşletme Yönetim Paneli</p>
+
+<div class="card">
+<h2>İşletme Bilgileri</h2>
+<label>İşletme Adı</label>
+<input id="name" placeholder="Pınarbaşı Oto Detailing">
+<label>Adres</label>
+<input id="address" placeholder="İşletme adresi">
+<label>Telefon</label>
+<input id="phone" placeholder="Telefon numarası">
+<label>Çalışma Saatleri</label>
+<input id="hours" placeholder="09:00 - 19:00">
+<button onclick="saveInfo()">Bilgileri Kaydet</button>
+</div>
+
+<div class="card">
+<h2>Hizmetler ve Açıklamalar</h2>
+<textarea id="services" placeholder="Hizmetlerinizi buraya yazın"></textarea>
+<button onclick="saveServices()">Hizmetleri Kaydet</button>
+</div>
+
+<div class="card">
+<h2>Fotoğraf ve Video</h2>
+<input type="file" id="media" accept="image/*,video/*" multiple>
+<p class="note">Bu alan şimdilik dosya seçmenizi sağlar. İnternete yükleme özelliğini daha sonra bağlayacağız.</p>
+</div>
+
+<div class="card">
+<h2>Bilgi</h2>
+<p class="note">Bu ilk sürümde bilgiler yalnızca bu cihazın tarayıcısına kaydedilir. Canlı internet sitesine henüz aktarılmaz.</p>
+</div>
+</div>
+
+<script>
+function saveInfo(){
+const info={
+name:document.getElementById('name').value,
+address:document.getElementById('address').value,
+phone:document.getElementById('phone').value,
+hours:document.getElementById('hours').value
+};
+localStorage.setItem('businessInfo',JSON.stringify(info));
+alert('Bilgiler bu cihazda kaydedildi.');
+}
+function saveServices(){
+localStorage.setItem('businessServices',document.getElementById('services').value);
+alert('Hizmetler bu cihazda kaydedildi.');
+}
+</script>
+</body>
+</html>
